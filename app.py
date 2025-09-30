@@ -1,14 +1,9 @@
-import os
 import streamlit as st
 from datetime import datetime
 from streamlit_autorefresh import st_autorefresh
 
-# --- ユーザー情報 ---
-USER_DATA = {}
-for key, value in os.environ.items():
-    if key.startswith("USER"):
-        username, password = value.split(":")
-        USER_DATA[username] = password
+
+USER_DATA = st.secrets["users"]
 
 # --- セッション初期化 ---
 if "logged_in" not in st.session_state:
